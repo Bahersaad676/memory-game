@@ -1,0 +1,87 @@
+li {
+    list-style: none;
+    font-size: 50px;
+    background: rgb(179, 97, 97);
+    width: 8.6%;
+    text-align: center;
+    padding: 1%;
+    margin: 25px;
+    float: left;
+    transform: rotateY(180deg);
+}
+
+.card {
+	background: #ccc;
+	overflow: hidden;
+	margin: auto;
+	width: 95%;
+	margin-top: 2%; 
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+}	
+
+.back {
+	background: #3d6;
+    width: 8.6%;
+    padding: 13px;
+    position: relative;
+    top: -109px;
+    left: 25px;
+    height: 58px;
+}
+
+.back:hover {
+	opacity: 0;
+}
+
+.back2 {
+	background: #3d6;
+    width: 8.6%;
+    padding: 13px;
+    position: relative;
+    top: -302px;
+    left: 25px;
+    height: 58px;
+}
+
+.back2 {
+	opacity: 0;
+}
+
+
+.add {
+	transform: rotateX(180deg);
+}
+
+#demo {
+	text-align: center;
+	background: #ccc;
+	padding: 10px;
+	font-size: 35px;
+	margin: 0;
+}
+
+.rating {
+    color: black;
+    text-align: center;
+    background: #a1b3;
+    padding: 3%;
+    margin: auto;
+    margin-top: 1%;
+    width: 14%
+}
+
+.rating > i:hover {
+    color: yellow;
+}
+
+.ratejs {
+    color: yellow;
+}
