@@ -10,6 +10,10 @@ li {
     transform: rotateY(180deg);
 }
 
+li > i {
+    opacity: 0;
+}
+
 .card {
 	background: #ccc;
 	overflow: hidden;
@@ -27,37 +31,11 @@ body {
 	padding: 0px;
 }	
 
-.back {
-	background: #3d6;
-    width: 8.6%;
-    padding: 13px;
-    position: relative;
-    top: -109px;
-    left: 25px;
-    height: 58px;
-}
 
-.back:hover {
-	opacity: 0;
-}
-
-.back2 {
-	background: #3d6;
-    width: 8.6%;
-    padding: 13px;
-    position: relative;
-    top: -302px;
-    left: 25px;
-    height: 58px;
-}
-
-.back2 {
-	opacity: 0;
-}
 
 
 .add {
-	transform: rotateX(180deg);
+	opacity: 1;
 }
 
 #demo {
@@ -78,9 +56,6 @@ body {
     width: 14%
 }
 
-.rating > i:hover {
-    color: yellow;
-}
 
 .ratejs {
     color: yellow;
