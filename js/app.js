@@ -15,7 +15,7 @@ for (var i = 0; i < list.length; i++) {
 
   list[i].onclick = function addToArray() {
     numCardOpend.push(this);
-    this.classList.add("add");
+    this.children[0].classList.add("add");
 
     if (numCardOpend.length === 2) {
       if (numCardOpend[0].innerHTML === numCardOpend[1].innerHTML) theSameCard();
@@ -54,8 +54,8 @@ var myTimer;
 
 // if they are the same card
 function theSameCard() {
-  numCardOpend[0].classList.add("add");
-  numCardOpend[1].classList.add("add");
+  numCardOpend[0].children[0].classList.add("add");
+  numCardOpend[1].children[0].classList.add("add");
   opend.push(this);   
   numCardOpend.length = 0;
 }
@@ -64,9 +64,8 @@ function theSameCard() {
 function notSameCard() {
   numMistakes.push(this);
   setTimeout(function () {
-    numCardOpend[0].classList.remove("add");
-    numCardOpend[1].classList.remove("add");
+    numCardOpend[0].children[0].classList.remove("add");
+    numCardOpend[1].children[0].classList.remove("add");
     numCardOpend.length = 0;
   }, 600);
 }
-
