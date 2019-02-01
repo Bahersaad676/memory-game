@@ -31,11 +31,16 @@ body {
 	padding: 0px;
 }	
 
+@keyframes animation {
+  from   {opacity: 0;}
+  to  {opacity: 1;}
+}
 
 
-
-.add {
+.open {
 	opacity: 1;
+    animation-name: animation;
+    animation-duration: 0s;
 }
 
 #demo {
@@ -59,4 +64,8 @@ body {
 
 .ratejs {
     color: yellow;
+}
+
+.backcolor {
+    background: #f4fe;
 }
