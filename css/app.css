@@ -15,21 +15,21 @@ li > i {
 }
 
 .card {
-	background: #ccc;
-	overflow: hidden;
-	margin: auto;
-	width: 95%;
-	margin-top: 2%; 
+    background: #ccc;
+    overflow: hidden;
+    margin: auto;
+    width: 95%;
+    margin-top: 2%; 
 }
 
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-	margin: 0px;
-	padding: 0px;
-}	
+    margin: 0px;
+    padding: 0px;
+}   
 
 @keyframes animation {
   from   {opacity: 0;}
@@ -38,17 +38,17 @@ body {
 
 
 .open {
-	opacity: 1;
+    opacity: 1;
     animation-name: animation;
     animation-duration: 0s;
 }
 
 #demo {
-	text-align: center;
-	background: #ccc;
-	padding: 10px;
-	font-size: 35px;
-	margin: 0;
+    text-align: center;
+    background: #ccc;
+    padding: 10px;
+    font-size: 35px;
+    margin: 0;
 }
 
 .rating {
@@ -68,4 +68,12 @@ body {
 
 .backcolor {
     background: #f4fe;
+}
+
+.reset {
+    text-align: center;
+    background: #f4b3c6;
+    width: 14%;
+    margin:12px auto;
+    padding: 3%;
 }
