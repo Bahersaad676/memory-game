@@ -35,7 +35,7 @@ var myTimer;
 })();
 
 // shuffle
-// these two function will shuffle(mix) between cards
+// these two function will shuffle(mix) all cards
 
 function shuffle(a) {
     var j, x, i;
