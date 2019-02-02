@@ -15,7 +15,7 @@ numCardOpend = [];
     numCardOpend.push(this);
     this.children[0].classList.add("open");
     if (numCardOpend.length === 2) compare();
-    if ((opend.length * 2) === list.length) allOpenedCards();
+    if ((opend.length * 2) === list.length) rate();
   }
 }
 })();
@@ -80,7 +80,7 @@ function compare() {
 }
 
 // this function will work if all cards opened 
-function allOpenedCards() {
+function rate() {
   clearInterval(myTimer);
         if (numMistakes.length <= 3) {
           rating[0].children[0].classList.add("ratejs");
