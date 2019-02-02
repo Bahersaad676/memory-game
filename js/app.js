@@ -15,22 +15,8 @@ numCardOpend = [];
     numCardOpend.push(this);
     this.children[0].classList.add("open");
     if (numCardOpend.length === 2) compare();
-    if ((opend.length * 2) === list.length) {
-        clearInterval(myTimer);
-        if (numMistakes.length <= 3) {
-          rating[0].children[0].classList.add("ratejs");
-          rating[0].children[1].classList.add("ratejs");
-          rating[0].children[2].classList.add("ratejs");
-      } else if (4 < numMistakes.length && numMistakes.length < 10) {
-        rating[0].children[0].classList.add("ratejs");
-        rating[0].children[1].classList.add("ratejs");
-      } else if (numMistakes.length > 10) {
-        rating[0].children[0].classList.add("ratejs");
-      }
-    }
-
+    if ((opend.length * 2) === list.length) allOpenedCards();
   }
-
 }
 })();
 
@@ -63,9 +49,9 @@ function shuffle(a) {
 }
 
 function randomCards() {
-  shuffle(list);
-   cards[0].innerHTML = "";
-   list.forEach(function (item) {
+  shuffle(list); // shuffle cards
+   cards[0].innerHTML = ""; // clear all list
+   list.forEach(function (item) { // put shuffle cards
      cards[0].appendChild(item);
    });
    
@@ -91,4 +77,19 @@ function compare() {
     numCardOpend.length = 0;
   }, 600);
   }
+}
+
+// this function will work if all cards opened 
+function allOpenedCards() {
+  clearInterval(myTimer);
+        if (numMistakes.length <= 3) {
+          rating[0].children[0].classList.add("ratejs");
+          rating[0].children[1].classList.add("ratejs");
+          rating[0].children[2].classList.add("ratejs");
+      } else if (4 < numMistakes.length && numMistakes.length < 10) {
+        rating[0].children[0].classList.add("ratejs");
+        rating[0].children[1].classList.add("ratejs");
+      } else if (numMistakes.length > 10) {
+        rating[0].children[0].classList.add("ratejs");
+      }
 }
