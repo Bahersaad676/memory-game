@@ -1,6 +1,8 @@
+
 // variables
 let fas = [...document.getElementsByClassName('fas')],
 list = [...document.getElementsByClassName("list")],
+mainCard = [...document.getElementsByClassName("card")],
 cards = [...document.getElementsByClassName("cards")],
 opend = [...document.getElementsByClassName("open")],
 rating = [...document.getElementsByClassName("rating")],
@@ -9,22 +11,23 @@ stopTimer,
 numCardOpend = [];
 
 (function mainFunc() {
-  for (var i = 0; i < list.length; i++) {
+list.forEach(function (item) {
+  item.addEventListener("click", addToArray);
 
-  list[i].onclick = function addToArray() {
-    numCardOpend.push(this);
-    this.children[0].classList.add("open");
-    if (numCardOpend.length === 2) compare();
-    if ((opend.length * 2) === list.length) rate();
-  }
-}
+});
 })();
 
 
-
+function addToArray() {
+  numCardOpend.push(this);
+    this.children[0].classList.add("open");
+    if (numCardOpend.length === 2) compare();
+    if ((opend.length * 2) === list.length) rate();
+}
 // Timer
+
 var myTimer;
-(function clock() {
+function clock() {
   myTimer = setInterval(myClock, 1000);
   var c = 0;
 
@@ -32,7 +35,7 @@ var myTimer;
     document.getElementById("demo").innerHTML = ++c;
   }
 
-})();
+}
 
 // shuffle
 // these two function will shuffle(mix) all cards
@@ -63,10 +66,12 @@ randomCards();
 // this function will compare between cards
 function compare() {
   // do this if the same card
+
+     
   if (numCardOpend[0].innerHTML === numCardOpend[1].innerHTML) {
   numCardOpend[0].children[0].classList.add("open", "backcolor");
   numCardOpend[1].children[0].classList.add("open", "backcolor");
-  opend.push(this);   
+  opend.push(this);
   numCardOpend.length = 0;
   // do this if not the same card
   } else if (numCardOpend[0].innerHTML !== numCardOpend[1].innerHTML) {
@@ -77,6 +82,7 @@ function compare() {
     numCardOpend.length = 0;
   }, 600);
   }
+
 }
 
 // this function will work if all cards opened 
@@ -93,3 +99,5 @@ function rate() {
         rating[0].children[0].classList.add("ratejs");
       }
 }
+
+
