@@ -11,7 +11,6 @@ stopTimer,
 moves = 1,
 numCardOpend = [];
 
-console.log(rating[0].children[0]);
 
 (function mainFunc() {
 list.forEach(function (item) {
@@ -27,7 +26,12 @@ function addToArray() {
     if(moves === 2) clock();
     if (numCardOpend.length === 2) compare();
     if ((opend.length * 2) === list.length) rate();
+    if (numCardOpend[0].children[0].classList.contains("open") || numCardOpend[1].children[0].classList.contains("open")) {
+      numCardOpend[0].removeEventListener("click", addToArray);
+      numCardOpend[0].removeEventListener("click", addToArray);
+    } 
 }
+
 // Timer
 
 var myTimer;
@@ -46,15 +50,9 @@ function clock() {
 
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
-
-  // While there remain elements to shuffle...
   while (0 !== currentIndex) {
-
-    // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
-
-    // And swap it with the current element.
     temporaryValue = array[currentIndex];
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
@@ -69,7 +67,6 @@ function randomCards() {
    /*list.forEach(function (item) { // put shuffle cards
      cards[0].appendChild(item);
    });*/
-   var shuf = [];
    for (var i = 0; i < list.length; i++) {
      cards[0].appendChild(list[i]);
    }
@@ -92,6 +89,8 @@ function compare() {
   numMistakes.push(this);
   setTimeout(function () {
     numCardOpend[0].children[0].classList.remove("open");
+    numCardOpend[0].addEventListener("click", addToArray);
+    numCardOpend[1].addEventListener("click", addToArray);
     numCardOpend[1].children[0].classList.remove("open");
     numCardOpend.length = 0;
   }, 400);
