@@ -1,25 +1,33 @@
-li {
-    list-style: none;
-    font-size: 50px;
-    background: rgb(179, 97, 97);
-    width: 8.6%;
-    text-align: center;
-    padding: 1%;
-    margin: 25px;
-    float: left;
-    transform: rotateY(180deg);
-}
+
 
 li > i {
     opacity: 0;
 }
 
-.card {
-    background: #ccc;
-    overflow: hidden;
-    margin: auto;
-    width: 95%;
-    margin-top: 2%; 
+html {
+    box-sizing: border-box;
+   
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  
+}
+
+body {
+    background: #ffffff;
+    font-family: 'Chicle', cursive;
+    font-size:120%;
 }
 
 * {
@@ -29,51 +37,100 @@ li > i {
 body {
     margin: 0px;
     padding: 0px;
-}   
+}
 
-@keyframes animation {
-  from   {opacity: 0;}
-  to  {opacity: 1;}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 
 .open {
     opacity: 1;
-    animation-name: animation;
-    animation-duration: 0s;
+    font-size: 30px;
+    animation-name: animatetop;
+    animation-duration: 0.8s;
 }
 
-#demo {
-    text-align: center;
-    background: #ccc;
-    padding: 10px;
-    font-size: 35px;
-    margin: 0;
+@keyframes animatetop {
+    from {opacity: 0}
+    to {opacity: 1}
 }
 
-.rating {
-    color: black;
-    text-align: center;
-    background: #a1b3;
-    padding: 3%;
-    margin: auto;
-    margin-top: 1%;
-    width: 14%
+.cards {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
 }
 
+.cards .list {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.time {
+    position: relative;
+    top: 70px;
+    left: 44px;
+}
 
 .ratejs {
     color: yellow;
 }
 
 .backcolor {
-    background: #f4fe;
+    background: #02ccba !important;
+}
+
+
+.moves {
+    position: relative;
+    top: 24px;
+    right: 74px;
 }
 
 .reset {
-    text-align: center;
-    background: #f4b3c6;
-    width: 14%;
-    margin:12px auto;
-    padding: 3%;
+    position: relative;
+    top: 114px;
+    left: 157px;
 }
+
+.rating {
+    text-align: left;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    right: 220px;
+}
+
+.rates {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0px 5px 0px 0px;
+}
+
+.ratesJs {
+    color: gold;
+}
+
