@@ -1,26 +1,30 @@
-
 // variables
 let fas = [...document.getElementsByClassName('fas')],
 list = [...document.getElementsByClassName("list")],
 mainCard = [...document.getElementsByClassName("card")],
 cards = [...document.getElementsByClassName("cards")],
 opend = [...document.getElementsByClassName("open")],
-rating = [...document.getElementsByClassName("rating")],
+rating = [...document.getElementsByClassName("rates")],
+movehml = [...document.getElementsByClassName('moves')],
 numMistakes = [],
 stopTimer,
+moves = 1,
 numCardOpend = [];
+
+console.log(rating[0].children[0]);
 
 (function mainFunc() {
 list.forEach(function (item) {
   item.addEventListener("click", addToArray);
-
 });
 })();
 
 
 function addToArray() {
   numCardOpend.push(this);
-    this.children[0].classList.add("open");
+  movehml[0].innerHTML = moves++ + " moves ";
+  this.children[0].classList.add("open");
+    if(moves === 2) clock();
     if (numCardOpend.length === 2) compare();
     if ((opend.length * 2) === list.length) rate();
 }
@@ -32,7 +36,7 @@ function clock() {
   var c = 0;
 
   function myClock() {
-    document.getElementById("demo").innerHTML = ++c;
+    document.getElementsByClassName("time")[0].innerHTML = ++c + " second";
   }
 
 }
@@ -40,23 +44,35 @@ function clock() {
 // shuffle
 // these two function will shuffle(mix) all cards
 
-function shuffle(a) {
-    var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }
 
 function randomCards() {
   shuffle(list); // shuffle cards
    cards[0].innerHTML = ""; // clear all list
-   list.forEach(function (item) { // put shuffle cards
+   /*list.forEach(function (item) { // put shuffle cards
      cards[0].appendChild(item);
-   });
+   });*/
+   var shuf = [];
+   for (var i = 0; i < list.length; i++) {
+     cards[0].appendChild(list[i]);
+   }
    
 }
 
@@ -66,11 +82,9 @@ randomCards();
 // this function will compare between cards
 function compare() {
   // do this if the same card
-
-     
   if (numCardOpend[0].innerHTML === numCardOpend[1].innerHTML) {
-  numCardOpend[0].children[0].classList.add("open", "backcolor");
-  numCardOpend[1].children[0].classList.add("open", "backcolor");
+  numCardOpend[0].children[0].parentNode.classList.add("open", "backcolor");
+  numCardOpend[1].children[0].parentNode.classList.add("open", "backcolor");
   opend.push(this);
   numCardOpend.length = 0;
   // do this if not the same card
@@ -80,7 +94,7 @@ function compare() {
     numCardOpend[0].children[0].classList.remove("open");
     numCardOpend[1].children[0].classList.remove("open");
     numCardOpend.length = 0;
-  }, 600);
+  }, 400);
   }
 
 }
@@ -89,15 +103,13 @@ function compare() {
 function rate() {
   clearInterval(myTimer);
         if (numMistakes.length <= 3) {
-          rating[0].children[0].classList.add("ratejs");
-          rating[0].children[1].classList.add("ratejs");
-          rating[0].children[2].classList.add("ratejs");
+          rating[0].children[0].classList.add("ratesJs");
+          rating[0].children[1].classList.add("ratesJs");
+          rating[0].children[2].classList.add("ratesJs");
       } else if (4 < numMistakes.length && numMistakes.length < 10) {
-        rating[0].children[0].classList.add("ratejs");
-        rating[0].children[1].classList.add("ratejs");
+        rating[0].children[0].classList.add("ratesJs");
+        rating[0].children[1].classList.add("ratesJs");
       } else if (numMistakes.length > 10) {
-        rating[0].children[0].classList.add("ratejs");
+        rating[0].children[0].classList.add("ratesJs");
       }
 }
-
-
