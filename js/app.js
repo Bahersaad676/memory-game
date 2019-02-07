@@ -113,3 +113,8 @@ function rate() {
         rating[0].children[0].classList.add("ratesJs");
       }
 }
+
+// this function will reload the page in all browsers
+function realodPage() {
+  window.location.replace(window.location.pathname + window.location.search + window.location.hash);
+}
