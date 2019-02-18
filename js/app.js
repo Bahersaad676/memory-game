@@ -6,10 +6,15 @@ cards = [...document.getElementsByClassName("cards")],
 opend = [...document.getElementsByClassName("open")],
 rating = [...document.getElementsByClassName("rates")],
 movehml = [...document.getElementsByClassName('moves')],
+time = [...document.getElementsByClassName("time")],
+timeFinal = [...document.getElementsByClassName("time-final")],
+modal = [...document.getElementsByClassName("modal")],
+finalRate = [...document.getElementsByClassName("final-rating")],
 numMistakes = [],
 stopTimer,
 moves = 1,
 numCardOpend = [];
+
 
 
 (function mainFunc() {
@@ -19,19 +24,17 @@ list.forEach(function (item) {
 })();
 
 
-function addToArray() {
+function addToArray() { 
   numCardOpend.push(this);
-  movehml[0].innerHTML = moves++ + " moves ";
+  movehml[0].innerHTML = parseInt(moves++ / 2) + " moves ";
   this.children[0].classList.add("open");
     if(moves === 2) clock();
     if (numCardOpend.length === 2) compare();
-    if ((opend.length * 2) === list.length) rate();
-    if (numCardOpend[0].children[0].classList.contains("open") || numCardOpend[1].children[0].classList.contains("open")) {
-      numCardOpend[0].removeEventListener("click", addToArray);
+    if ((opend.length * 2) === list.length) {rate(); final(); finalRating();}
+    if (numCardOpend[0].firstElementChild.classList.contains("open") || numCardOpend[1].firstElementChild.classList.contains("open")) {
       numCardOpend[0].removeEventListener("click", addToArray);
     } 
 }
-
 // Timer
 
 var myTimer;
@@ -40,10 +43,11 @@ function clock() {
   var c = 0;
 
   function myClock() {
-    document.getElementsByClassName("time")[0].innerHTML = ++c + " second";
+    document.getElementsByClassName("time")[0].innerHTML = (++c) + " second";
   }
 
 }
+
 
 // shuffle
 // these two function will shuffle(mix) all cards
@@ -101,19 +105,39 @@ function compare() {
 // this function will work if all cards opened 
 function rate() {
   clearInterval(myTimer);
-        if (numMistakes.length <= 3) {
+        if (/*numMistakes.length <= 3*/ moves / 2 - (1/2) < 20) {
           rating[0].children[0].classList.add("ratesJs");
           rating[0].children[1].classList.add("ratesJs");
           rating[0].children[2].classList.add("ratesJs");
-      } else if (4 < numMistakes.length && numMistakes.length < 10) {
+      } else if (/*4 < numMistakes.length && numMistakes.length < 10*/ moves / 2 - (1/2) > 20) {
         rating[0].children[0].classList.add("ratesJs");
         rating[0].children[1].classList.add("ratesJs");
-      } else if (numMistakes.length > 10) {
+      } /*else if (numMistakes.length > 10) {
         rating[0].children[0].classList.add("ratesJs");
-      }
+      }*/
 }
 
 // this function will reload the page in all browsers
 function realodPage() {
   window.location.replace(window.location.pathname + window.location.search + window.location.hash);
+}
+
+// this function will work when the player win
+
+function final() {
+  timeFinal[0].innerHTML = parseInt(time[0].textContent); 
+  modal[0].style.display="block";
+}
+
+function finalRating() {
+  if (moves / 2 - (1/2) > 20) {
+    finalRate[0].children[0].style.color = "gold";
+    finalRate[0].children[1].style.color = "gold";
+  }
+
+  if (moves / 2 - (1/2) < 20) {
+    finalRate[0].children[0].style.color = "gold";
+    finalRate[0].children[1].style.color = "gold";
+    finalRate[0].children[2].style.color = "gold";
+  }
 }
