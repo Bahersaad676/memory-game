@@ -1,3 +1,7 @@
+/*
+ 2019 / 1 / 19
+ Baher Saad 
+*/
 // variables
 let fas = [...document.getElementsByClassName('fas')],
 list = [...document.getElementsByClassName("list")],
